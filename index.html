@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network Containment</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Network Containment</p>
+          <h1>感染封じ込めゲーム</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="restart-button" class="secondary-button">リスタート</button>
+          <button id="end-turn-button" class="primary-button">ターンを進める</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="board-panel">
+          <div class="board-header">
+            <div>
+              <h2>確率的感染ネットワーク</h2>
+              <p id="stage-caption">
+                20ノードの固定ネットワーク。重要ノードはリスタートごとにランダムに入れ替わります。
+              </p>
+            </div>
+            <div class="legend">
+              <span><i class="swatch normal"></i>正常</span>
+              <span><i class="swatch infected"></i>感染</span>
+              <span><i class="swatch protected"></i>保護</span>
+              <span><i class="swatch critical"></i>重要</span>
+            </div>
+          </div>
+
+          <div class="board-frame">
+            <svg id="network-svg" viewBox="0 0 960 640" aria-label="network graph"></svg>
+          </div>
+
+          <div class="event-log">
+            <h3>ログ</h3>
+            <ul id="log-list"></ul>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="status-card">
+            <h2>状況</h2>
+            <dl class="stats">
+              <div>
+                <dt>ターン</dt>
+                <dd id="turn-value">1 / 8</dd>
+              </div>
+              <div>
+                <dt>予算</dt>
+                <dd id="budget-value">2</dd>
+              </div>
+              <div>
+                <dt>感染数</dt>
+                <dd id="infected-value">0</dd>
+              </div>
+              <div>
+                <dt>重要ノード被害</dt>
+                <dd id="critical-value">0 / 3</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="action-card">
+            <h2>介入</h2>
+            <div id="action-list" class="action-list"></div>
+            <p id="selection-hint" class="selection-hint">
+              アクションを選び、ノードまたは線をクリックしてください。
+            </p>
+          </section>
+
+          <section class="goal-card">
+            <h2>目的</h2>
+            <p>8ターン終了までに重要ノード3つのうち2つ以上を守る。</p>
+            <p>感染総数が多いほどスコアが下がります。</p>
+          </section>
+
+          <section id="result-card" class="result-card hidden">
+            <h2 id="result-title">結果</h2>
+            <p id="result-summary"></p>
+            <p id="score-value"></p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
