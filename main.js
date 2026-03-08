@@ -128,6 +128,7 @@ function createStage() {
     edge("N", "O"),
     edge("N", "R"),
     edge("N", "S"),
+    edge("N", "T"),
     edge("O", "S"),
     edge("O", "T"),
     edge("P", "Q"),
